@@ -120,14 +120,13 @@ public function update(Request $request, caisse_detail $caisse_detail)
 
 }
 
-public function destroy(caisse_detail $caisse_detail)
+public function destroy(Caisse_detail $caisse_detail)
 {
     # code...
+    $caisse_detail= Caisse_detail::find($caisse_detail->id);
+    $caisse_detail->delete();
+    return redirect('caisse_details')->with("success", "Le caisse detail est supprimé avec succes!");
 
-    $caisse_detail= caisse_detail::find($caisse_detail->id);
-    
-  $caisse_detail->delete();
-  return redirect('caisse_details');
 }
 
 
