@@ -57,4 +57,13 @@ Route::post('comptes','ComptesController@store');
 Route::post('comptes/destroy/{compte}','ComptesController@destroy');
 Route::put('comptes/{compte}','ComptesController@update');
 
+Route::resource('caisse_details','Caisse_detailsController'); //Route pour un Guichet
+Route::get('caisse_details','Caisse_detailsController@index');
+Route::get('caisse_details/create','Caisse_detailsdetailController@create');
+Route::get('caisse_details/edit/{caisse_detail}','Caisse_detailsController@edit');
+Route::get('caisse_details/{caisse_detail}','Caisse_detailsController@show');
+Route::post('caisse_details','Caisse_detaisController@store');
+Route::post('caisse_details/destroy/{caisse}','Caisse_detailsController@destroy');
+Route::put('caisse_details/{caisse_detail}','Caisse_detailsController@update');
+Route::resource('caisse_details','Caisse_detailsController'); 
 

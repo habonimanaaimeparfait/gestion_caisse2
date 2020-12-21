@@ -47,7 +47,7 @@
                     <li><a class="" href="{{ url('caisses') }}">
                             <span class="fa fa-bar-chart">&nbsp;</span> Caisse
                         </a></li>
-                    <li><a class="" href="{{ url('detaille_caisses') }}">
+                    <li><a class="" href="{{ url('caisse_details') }}">
                             <span class="fa fa-bar-chart">&nbsp;</span> Detaille caisse
                         </a></li>
 
