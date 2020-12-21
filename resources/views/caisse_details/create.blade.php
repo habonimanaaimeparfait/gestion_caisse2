@@ -61,7 +61,7 @@
                                 </td>
                                 <td style="width:10%"> </td>
 
-                                {{-- <div class="form-group">
+                                <div class="form-group">
 
                                     <label for="type">type</label><br />
                                     <select name="type" id="type"
@@ -70,17 +70,17 @@
                                         <option value="decaissement">DECAISSEMENT</option>
                                     </select>
 
-                                </div> --}}
+                                </div>
 
-                                <div class="form-group">
-                                    <label for=""> tpe operation</label>
+                                {{-- <div class="form-group">
+                                    <label for=""> type operation</label>
                                     <input type="text" style="width:300px; height:35px ;background:black; color:white"
                                         name="type" id="" class="form-control"
                                         class="@error('type') is-danger @enderror" placeholder="">
                                     @error('type')
                                     <div class="alert alert-danger">{{$message}}</div>
                                     @enderror
-                                </div>
+                                </div> --}}
 
 
                                 <div class="form-group">
