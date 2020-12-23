@@ -46,19 +46,32 @@ public function store(Request $request)
 {
     # code...
     //validation
-
     $request->validate([
         'compte_id' =>'required',
         'caisse_id' =>'required',
+        'date' =>'required',
         'type' =>'required',
         'somme' =>'required',
         'libelle' =>'required'
-        
-       
     ]);
+
+    $compte = Compte::find($request->compte_id);
+    $caisse = Caisse::find($request->caisse_id);
+
+    if($compte && $caisse && $request->type == 'decaissement'){
+        $solde_du_compte = $compte->solde;
+        $compte->solde = $solde_du_compte - $request->somme;
+        $compte->save();
+
+        $solde_de_la_caisse = $caisse->solde;
+        $caisse->solde = $solde_de_la_caisse - $request->somme;
+        $caisse->save();
+    }
+
     $caisse_detail= new Caisse_detail();
     $caisse_detail->compte_id= $request->compte_id;
-   
+
+    $caisse_detail->date= $request->date;
     $caisse_detail->caisse_id= $request->caisse_id;
     $caisse_detail->type= $request->type;
     $caisse_detail->somme= $request->somme;
@@ -95,12 +108,13 @@ public function edit(Caisse_detail $caisse_detail)
     ]);
 }
 
-public function update(Request $request, caisse_detail $caisse_detail)
+public function update(Request $request, Caisse_detail $caisse_detail)
 
 {
     $request->validate([
         'compte_id' =>'required',
         'caisse_id' =>'required',
+        'date' =>'required',
         'type' =>'required',
         'somme' =>'required',
         'libelle' =>'required'
@@ -109,7 +123,7 @@ public function update(Request $request, caisse_detail $caisse_detail)
     ]);
     $caisse_detail= new Caisse_detail();
     $caisse_detail->compte_id= $request->compte_id;
-   
+    $caisse_detail->date= $request->date;
     $caisse_detail->caisse_id= $request->caisse_id;
     $caisse_detail->type= $request->type;
     $caisse_detail->somme= $request->somme;
@@ -122,12 +136,18 @@ public function update(Request $request, caisse_detail $caisse_detail)
 
 public function destroy(Caisse_detail $caisse_detail)
 {
-    # code...
-    $caisse_detail= Caisse_detail::find($caisse_detail->id);
-    $caisse_detail->delete();
-    return redirect('caisse_details')->with("success", "Le caisse detail est supprimé avec succes!");
-
+    $caisse_detail = Caisse_detail::find($caisse_detail->id);
+    $caisse_detail-> delete();
+    return \redirect('caisse_details')->with('status','La caisse details a ete supprime avec Succees!!!');
 }
+// public function destroy(Caisse_detail $caisse_detail)
+// {
+//     # code...
+//     $caisse_detail= Caisse_detail::find($caisse_detail->id);
+//     $caisse_detail->delete();
+//     return redirect('caisse_details')->with("success", "Le caisse detail est supprimé avec succes!");
+
+// }
 
 
 }
