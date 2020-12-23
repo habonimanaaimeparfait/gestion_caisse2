@@ -76,7 +76,7 @@
                         </div>
 
                         <button type="submit" onclick="return confirm('Voulez vous ajouter les information de la caisse ?')"
-                            class="btn btn-danger">Ajouter</button>
+                            class="btn btn-sucessus">Ajouter</button>
                         <button type="reset" class="btn btn-primary">Annuler</button>
                     </form>
                 </div>
