@@ -17,6 +17,7 @@ class CreateCaisseDetailsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('compte_id');
             $table->unsignedBigInteger('caisse_id');
+            $table->date('date');
             $table->string('type');
             $table->string ('somme');
             $table->string ('libelle');
